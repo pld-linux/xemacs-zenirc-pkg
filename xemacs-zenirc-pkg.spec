@@ -2,18 +2,17 @@ Summary:	ZENIRC IRC Client
 Summary(pl):	ZENIRC IRC Client
 Name:		xemacs-zenirc-pkg
 %define 	srcname	zenirc
-Version:	1.09
+Version:	2.112
 Release:	1
 License:	GPL
 Group:		Applications/Editors/Emacs
 Group(pl):	Aplikacje/Edytory/Emacs
-Source0:	ftp://ftp.xemacs.org/xemacs/packages/%{srcname}-%{version}-pkg.tar.gz
-Patch0:		xemacs-zenirc-pkg-info.patch
+Source0:	ftp://ftp.splode.com/pub/zenirc/zenirc-%{version}.tar.gz
+#Patch0:		xemacs-zenirc-pkg-info.patch
 URL:		http://www.xemacs.org/
 BuildArch:	noarch
 Conflicts:	xemacs-sumo
 Requires:	xemacs
-Requires:	xemacs-zenirc-pkg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -21,22 +20,35 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description -l pl 
 
 %prep
-%setup -q -c
-%patch0 -p1
+%setup -q -n zenirc-%{version}
+#%patch0 -p1
+cat <<EOF >src/auto-autoloads.el
+(autoload 'zenirc "zenirc" nil t)
+# no goodies!
+#(autoload 'zenirc-color-mode "zenirc-color-mode" nil t)
+#(autoload 'zenirc-complete "zenirc-complete" nil t)
+EOF
 
 %build
-(cd man/zenirc; awk '/^\\input texinfo/ {print FILENAME}' * | xargs makeinfo)
+#(cd man/zenirc; awk '/^\\input texinfo/ {print FILENAME}' * | xargs makeinfo)
+./configure 
+%{__make} EMACS=xemacs
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/xemacs-packages,%{_infodir}}
+install -d $RPM_BUILD_ROOT%{_datadir}/xemacs-packages/lisp/zenirc
+install -d $RPM_BUILD_ROOT%{_infodir}
 
-cp -a * $RPM_BUILD_ROOT%{_datadir}/xemacs-packages
-mv -f  $RPM_BUILD_ROOT%{_datadir}/xemacs-packages/info/*.info* $RPM_BUILD_ROOT%{_infodir}
-rm -fr $RPM_BUILD_ROOT%{_datadir}/xemacs-packages/info
+cp src/*example* .
+# remove .el file if corresponding .elc exists
+for i in src/*.el; do test ! -f ${i}c || rm -f $i ; done
+install src/*.el* $RPM_BUILD_ROOT%{_datadir}/xemacs-packages/lisp/zenirc
 
-gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info* \
-	lisp/zenirc/README lisp/zenirc/NEWS lisp/zenirc/INSTALL lisp/zenirc/ChangeLog 
+install doc/*.info* $RPM_BUILD_ROOT%{_infodir}
+gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info*
+rm -f doc/zenirc.{info,txt,texi}
+
+gzip -9nf BUGS README NEWS
 
 %clean
 rm -fr $RPM_BUILD_ROOT
@@ -49,8 +61,6 @@ rm -fr $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc lisp/zenirc/README.gz lisp/zenirc/NEWS.gz lisp/zenirc/INSTALL.gz lisp/zenirc/ChangeLog.gz 
-%{_datadir}/xemacs-packages%{_sysconfdir}/*
+%doc *.gz doc *example*
+%{_datadir}/xemacs-packages/lisp/*
 %{_infodir}/*
-%dir %{_datadir}/xemacs-packages/lisp/*
-%{_datadir}/xemacs-packages/lisp/*/*.elc
