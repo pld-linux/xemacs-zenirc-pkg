@@ -49,8 +49,6 @@ install doc/*.info* $RPM_BUILD_ROOT%{_infodir}
 
 rm -f doc/zenirc.{info,txt,texi}
 
-gzip -9nf BUGS README NEWS
-
 %clean
 rm -fr $RPM_BUILD_ROOT
 
@@ -62,6 +60,6 @@ rm -fr $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc *example*
+%doc BUGS README NEWS doc *example*
 %{_datadir}/xemacs-packages/lisp/*
 %{_infodir}/*
