@@ -2,7 +2,7 @@ Summary:	ZENIRC IRC Client
 Summary(pl):	ZENIRC IRC Client
 Name:		xemacs-zenirc-pkg
 %define 	srcname	zenirc
-Version:	1.08
+Version:	1.09
 Release:	1
 License:	GPL
 Group:		Applications/Editors/Emacs
