@@ -1,7 +1,7 @@
 Summary:	ZENIRC IRC Client
 Summary(pl):	ZENIRC - klient IRC
 Name:		xemacs-zenirc-pkg
-%define 	srcname	zenirc
+%define		srcname	zenirc
 Version:	2.112
 Release:	1
 License:	GPL
@@ -17,8 +17,10 @@ Requires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+ZENIRC IRC Client.
 
-%description -l pl 
+%description -l pl
+ZENIRC - klient IRC.
 
 %prep
 %setup -q -n zenirc-%{version}
@@ -32,7 +34,7 @@ EOF
 
 %build
 #(cd man/zenirc; awk '/^\\input texinfo/ {print FILENAME}' * | xargs makeinfo)
-./configure 
+./configure
 %{__make} EMACS=xemacs
 
 %install
