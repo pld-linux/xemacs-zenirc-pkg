@@ -1,0 +1,24 @@
+diff -Nur xemacs-zenirc-pkg-1.07/man/zenirc/zenirc.texi xemacs-zenirc-pkg-1.07.new/man/zenirc/zenirc.texi
+--- xemacs-zenirc-pkg-1.07/man/zenirc/zenirc.texi	Wed Oct  7 13:21:30 1998
++++ xemacs-zenirc-pkg-1.07.new/man/zenirc/zenirc.texi	Sun Mar 26 14:46:57 2000
+@@ -9,9 +9,19 @@
+ @c ----------------------------------------------------------------------
+ 
+ @c %**start of header
+-@setfilename zenirc.info
++@setfilename ../../info/zenirc.info
+ @settitle ZenIRC Info Pages
+ @c %**end of header
++
++@ifinfo
++@format
++@dircategory XEmacs Editor:
++@direntry
++* ZenIRC: (zenirc).			Emacs IRC client.
++@end direntry
++@end format
++@end ifinfo
++
+ 
+ @comment New index for options
+ @c @defindex op
