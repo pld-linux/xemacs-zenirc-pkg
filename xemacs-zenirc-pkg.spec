@@ -54,10 +54,10 @@ gzip -9nf BUGS README NEWS
 rm -fr $RPM_BUILD_ROOT
 
 %post
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%fix_info_dir
 
 %postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%fix_info_dir
 
 %files
 %defattr(644,root,root,755)
