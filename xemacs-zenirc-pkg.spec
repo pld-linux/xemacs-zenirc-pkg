@@ -1,11 +1,12 @@
 Summary:	ZENIRC IRC Client
-Summary(pl):	ZENIRC IRC Client
+Summary(pl):	ZENIRC - klient IRC
 Name:		xemacs-zenirc-pkg
 %define 	srcname	zenirc
 Version:	2.112
 Release:	1
 License:	GPL
 Group:		Applications/Editors/Emacs
+Group(de):	Applikationen/Editors/Emacs
 Group(pl):	Aplikacje/Edytory/Emacs
 Source0:	ftp://ftp.splode.com/pub/zenirc/zenirc-%{version}.tar.gz
 #Patch0:		xemacs-zenirc-pkg-info.patch
@@ -45,7 +46,7 @@ for i in src/*.el; do test ! -f ${i}c || rm -f $i ; done
 install src/*.el* $RPM_BUILD_ROOT%{_datadir}/xemacs-packages/lisp/zenirc
 
 install doc/*.info* $RPM_BUILD_ROOT%{_infodir}
-gzip -9nf $RPM_BUILD_ROOT%{_infodir}/*.info*
+
 rm -f doc/zenirc.{info,txt,texi}
 
 gzip -9nf BUGS README NEWS
