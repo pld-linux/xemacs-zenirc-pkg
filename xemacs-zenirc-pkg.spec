@@ -7,6 +7,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Editors/Emacs
 Source0:	ftp://ftp.splode.com/pub/zenirc/zenirc-%{version}.tar.gz
+# Source0-md5:	ad6e1bb57e6416deac171c870bce2830
 #Patch0:		xemacs-zenirc-pkg-info.patch
 URL:		http://www.xemacs.org/
 BuildArch:	noarch
