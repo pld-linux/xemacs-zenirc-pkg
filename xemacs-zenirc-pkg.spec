@@ -6,8 +6,6 @@ Version:	2.112
 Release:	1
 License:	GPL
 Group:		Applications/Editors/Emacs
-Group(de):	Applikationen/Editors/Emacs
-Group(pl):	Aplikacje/Edytory/Emacs
 Source0:	ftp://ftp.splode.com/pub/zenirc/zenirc-%{version}.tar.gz
 #Patch0:		xemacs-zenirc-pkg-info.patch
 URL:		http://www.xemacs.org/
