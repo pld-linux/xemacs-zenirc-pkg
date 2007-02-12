@@ -1,5 +1,5 @@
 Summary:	ZENIRC IRC Client
-Summary(pl):	ZENIRC - klient IRC
+Summary(pl.UTF-8):   ZENIRC - klient IRC
 Name:		xemacs-zenirc-pkg
 %define		srcname	zenirc
 Version:	2.112
@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 ZENIRC IRC Client.
 
-%description -l pl
+%description -l pl.UTF-8
 ZENIRC - klient IRC.
 
 %prep
