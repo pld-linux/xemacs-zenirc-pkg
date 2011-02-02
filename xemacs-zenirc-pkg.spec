@@ -63,4 +63,4 @@ rm -fr $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc BUGS README NEWS doc *example*
 %{_datadir}/xemacs-packages/lisp/*
-%{_infodir}/*
+%{_infodir}/*.info*
