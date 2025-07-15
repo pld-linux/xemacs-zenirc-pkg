@@ -24,7 +24,7 @@ ZENIRC - klient IRC.
 
 %prep
 %setup -q -n zenirc-%{version}
-#%patch0 -p1
+#%%patch0 -p1
 cat <<EOF >src/auto-autoloads.el
 (autoload 'zenirc "zenirc" nil t)
 # no goodies!
